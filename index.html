@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Free Personal Finance Dashboard - Vertical Institute</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap">
+<style>
+/* AMP booth sign-up form, public copy on GitHub Pages (S250). Posts to the Apps Script doPost without cookies, so Google never rewrites the link to /u/1/. */
+:root{--blue:#0055FE;--blue-soft:#EAF1FF;--ink:#0B1B3A;--muted:#5B6B8A;--line:#D9E2F3;--paper:#FFFFFF;--wash:#F5F8FE;--bad:#C2410C;--good:#0E8A5F;
+  --f:"Libre Franklin",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E9EFFF;--muted:#9AA9C8;--line:#22314F;--paper:#111B33;--wash:#08101F;--blue-soft:#132552;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#E9EFFF;--muted:#9AA9C8;--line:#22314F;--paper:#111B33;--wash:#08101F;--blue-soft:#132552;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--wash);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.45}
+.wrap{max-width:460px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:16px}
+.mock{background:#FFF3E2;color:#8A4B00;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:44px;height:44px;border-radius:11px;display:block;flex:none}
+.brand b{display:block;font-weight:800}.brand span{display:block;font-size:13px;color:var(--muted)}
+h1{margin:4px 0 0;font-size:30px;line-height:1.1;font-weight:800;letter-spacing:-.01em}
+.lead{margin:0;color:var(--muted)}
+form,.done{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.f{display:flex;flex-direction:column;gap:5px}
+.f label{font-size:13px;font-weight:700;color:var(--muted)}
+.f label small{font-weight:500}
+.f input{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:13px 12px;font:16px var(--f);width:100%}
+.f input:focus{outline:3px solid var(--blue-soft);border-color:var(--blue)}
+.f input[aria-invalid="true"]{border-color:var(--bad)}
+.err{color:var(--bad);font-size:13px;font-weight:600;min-height:0}
+.err:empty{display:none}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.chk input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--blue);flex:none}
+.btn{border:0;background:var(--blue);color:#fff;font:700 17px var(--f);border-radius:14px;min-height:54px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:default}
+.fine{font-size:12px;color:var(--muted);margin:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.done{align-items:flex-start}
+.tick{width:52px;height:52px;border-radius:50%;background:var(--good);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.done h2{margin:0;font-size:24px;line-height:1.15}
+.done p{margin:0;color:var(--muted)}
+.gift{width:100%;background:var(--blue-soft);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.gift b{font-size:17px}
+.gift a{align-self:flex-start;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:11px 18px}
+.mail{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mailtag{background:#FFF3E2;color:#8A4B00;font-size:13px;font-weight:600;padding:8px 14px}
+.mh{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px}
+.mh small{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.mb{padding:14px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.mb p{margin:0}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><img src="data:image/png;base64,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" alt="Vertical Institute logo"><div><b>Vertical Institute</b><span>AMP event, 31 Oct 2026</span></div></div>
+  <div id="formBox">
+    <h1>Get your free Personal Finance Dashboard</h1>
+    <p class="lead">Leave your details and we email it to you. Our team will also share info on our Gen AI and automation courses.</p>
+  </div>
+  <form id="f" novalidate>
+    <div class="f"><label for="name">Full name</label><input id="name" autocomplete="name" required><div class="err" id="eName"></div></div>
+    <div class="f"><label for="phone">Mobile number</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 9123 4567" required><div class="err" id="ePhone"></div></div>
+    <div class="f"><label for="email">Email</label><input id="email" type="email" inputmode="email" autocomplete="email" placeholder="e.g. name@gmail.com" required><div class="err" id="eEmail"></div></div>
+    <div class="f"><label for="company">Company <small>(optional)</small></label><input id="company" autocomplete="organization"></div>
+    <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" tabindex="-1" autocomplete="off"></div>
+    <label class="chk"><input type="checkbox" id="consent"><span>I agree that Vertical Institute may contact me by phone, WhatsApp or email about its courses. I can ask to stop at any time.</span></label>
+    <div class="err" id="eConsent"></div>
+    <div class="err" id="eSend"></div>
+    <button class="btn" type="submit" id="go">Get my free dashboard</button>
+    <p class="fine">We use your details only to tell you about Vertical Institute courses. We never sell them. To stop or delete your details, tell Norman or Hamidah.</p>
+  </form>
+  <div class="done" id="done" hidden>
+    <div class="tick" aria-hidden="true">&#10003;</div>
+    <h2 id="thanks">Thank you!</h2>
+    <p>Your free Personal Finance Dashboard is on its way to <b id="sentTo"></b>. Check your inbox in a minute (and your spam folder, just in case).</p>
+    <p>Norman or Hamidah from our team will be in touch soon.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+var EXEC='https://script.google.com/macros/s/AKfycbwSzDyzXO9CwJmlQRkaIOQ81TrPAj0NofGFHbX158NozYVc7tv7tTMlSpTusLvMt0KIag/exec';
+var f=document.getElementById('f'),sent=false;
+function $(id){return document.getElementById(id);}
+function bad(input,errId,msg){$(errId).textContent=msg;if(input)input.setAttribute('aria-invalid',msg?'true':'false');return !msg;}
+function cleanPhone(v){return v.replace(/[\s\-()]/g,'').replace(/^\+?65/,'');}
+f.addEventListener('submit',function(e){e.preventDefault();if(sent)return;
+  var name=$('name').value.trim(),ph=cleanPhone($('phone').value.trim()),em=$('email').value.trim(),ok=true;
+  ok=bad($('name'),'eName',name.length<2?'Please type your name.':'')&&ok;
+  ok=bad($('phone'),'ePhone',/^[3689]\d{7}$/.test(ph)?'':'Please type an 8-digit Singapore number.')&&ok;
+  ok=bad($('email'),'eEmail',/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)?'':'Please type a valid email, e.g. name@gmail.com.')&&ok;
+  ok=bad(null,'eConsent',$('consent').checked?'':'Please tick the box so we may contact you.')&&ok;
+  if(!ok)return;
+  sent=true;$('go').disabled=true;$('go').textContent='Sending...';$('eSend').textContent='';
+  var data={name:name,phone:ph,email:em,company:$('company').value.trim(),consent:$('consent').checked,website:$('website').value};
+  function fail(msg){
+    sent=false;$('go').disabled=false;$('go').textContent='Get my free dashboard';
+    $('eSend').textContent=(msg&&msg.indexOf('Please')===0)?msg:'Something went wrong. Please try again, or ask Norman or Hamidah at the booth.';
+  }
+  fetch(EXEC,{method:'POST',credentials:'omit',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})
+    .then(function(r){return r.json();})
+    .then(function(r){
+      if(!r||!r.ok){fail(r&&r.error);return;}
+      $('thanks').textContent='Thank you, '+name.split(' ')[0]+'!';$('sentTo').textContent=em;
+      f.hidden=true;$('formBox').hidden=true;$('done').hidden=false;window.scrollTo(0,0);
+    })
+    .catch(function(){fail('');});
+});
+})();
+</script>
+</body>
+</html>
